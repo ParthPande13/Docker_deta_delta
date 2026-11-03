@@ -29,7 +29,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Train ML Model
-        run: python ml/train.py
+        run: python train.py
 
       - name: Run Tests
         run: python -m pytest
@@ -40,9 +40,7 @@ jobs:
   deploy:
     name: Deploy Application
     needs: test-and-build
-
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
     runs-on: ubuntu-latest
 
     steps:
